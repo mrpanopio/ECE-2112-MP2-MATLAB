@@ -1,0 +1,45 @@
+
+disp('This program finds the radius, the values of D,E,& F,and the center of the circle.')
+disp('The program follows the equation of the circle to solve the aforementioned values.')
+disp('Enter the corresponding points: ')
+
+x1=input('x1= '); y1=input('y1= ');
+fprintf('The first point is (%.2f,%.2f)\n',x1,y1);
+
+x2=input('x2= '); y2=input('y2= ');
+fprintf('The second point is (%.2f,%.2f)\n',x2,y2);
+
+x3=input('x3= '); y3=input('y3= ');
+fprintf('The third point is (%.2f,%.2f)\n',x3,y3);
+
+ssum1=((x1^2)+(y1^2));
+ssum2=((x2^2)+(y2^2));
+ssum3=((x3^2)+(y3^2));
+
+arrsol1=[x1,y1,1;x2,y2,1;x3,y3,1;];
+sol1=det(arrsol1);
+
+arrsol2=[ssum1,y1,1;ssum2,y2,1;ssum3,y3,1;];
+sol2=-det(arrsol2);
+
+arrsol3=[ssum1,x1,1;ssum2,x2,1;ssum3,x3,1;];
+sol3=det( arrsol3);
+
+arrsol4=[ssum1,x1,y1;ssum2,x2,y2;ssum3,x3,y3;];
+sol4=-det(arrsol4);
+
+h=round((-sol2/(2*sol1)),4);
+k=round((-sol3/(2*sol1)),4);
+r2=(((sol2^2)+(sol3^2))-(4*sol1*sol4))/(4*(sol1^2));
+r=round((sqrt(r2)),4);
+
+D=(sol2/sol1);
+E=(sol3/sol1);
+F=(sol4/sol1);
+
+disp('');
+fprintf('The center of the circle is(%.2f,%.2f)\n',h,k);
+fprintf('The radius of the circle is %.2f\n',r);
+fprintf('D= %.2f\n',D);
+fprintf('E= %.2f\n',E);
+fprintf('F= %.2fs\n',F);
